@@ -3,5 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CW1/CW1.vcxproj" />
+  <Project Path="CW1/CW1.vcxproj" Id="422b54bb-821f-4e85-b07c-0c701ea3a68b" />
+  <Project Path="CW2/CW2.vcxproj" Id="6a763244-96d3-4ae3-b0e3-21e45d515f27" />
+  <Project Path="CW3/CW3.vcxproj" Id="a811469f-9105-45a0-8b90-4f89f8468c7a" />
 </Solution>
