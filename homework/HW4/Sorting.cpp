@@ -2,8 +2,8 @@
 
 Sorting::Sorting()
 {
-    size_t size = 1;
-    int* arr = new int[size] {};
+    size = 1;
+    arr = new int[size] {};
 }
 
 Sorting::Sorting(int* arr, size_t size)
@@ -15,6 +15,11 @@ Sorting::Sorting(int* arr, size_t size)
 void Sorting::stupid_sort_ascending(size_t& iterations)
 {
     iterations = 0;
+
+    if (arr == nullptr || size <= 1 || std::is_sorted(arr, arr + size))
+    {
+        return;
+    }
 
     for (size_t i = 0; i < size; i++)
     {
@@ -34,6 +39,11 @@ void Sorting::stupid_sort_descending(size_t& iterations)
 {
     iterations = 0;
 
+    if (arr == nullptr || size <= 1)
+    {
+        return;
+    }
+
     for (size_t i = 0; i < size; i++)
     {
         for (size_t j = 0; j < size - 1; j++)
@@ -52,30 +62,59 @@ void Sorting::gnome_sort_asc(size_t& iterations)
 {
     iterations = 0;
 
-    if (size > 1 && arr != nullptr)
+    if (arr == nullptr || size <= 1 || std::is_sorted(arr, arr + size))
     {
-        size_t i = 0;
-        while (i < size - 1) // 2 6 7 8 9
-        {
-            if (arr[i] > arr[i + 1])
-            {
-                ++iterations;
+        return;
+    }
 
-                std::swap(arr[i], arr[i + 1]);
-                if (i == 0)
-                {
-                    ++i;
-                }
-                else
-                {
-                    --i;
-                }
-            }
-            else
+    size_t i = 0;
+    while (i < size - 1) // 2 6 7 8 9
+    {
+        if (arr[i] > arr[i + 1])
+        {
+            ++iterations;
+
+            std::swap(arr[i], arr[i + 1]);
+            if (i == 0)
             {
                 ++i;
             }
+            else
+            {
+                --i;
+            }
         }
+        else
+        {
+            ++i;
+        }
+    }
+}
+
+void Sorting::bubble_sort(size_t& iterations)
+{
+    iterations = 0;
+
+    if (arr == nullptr || size <= 1)
+        return;
+
+    for (size_t i = 0; i < size - 1; ++i)
+    {
+        bool swapped = false;
+
+        for (size_t j = 0; j < size - 1 - i; ++j)
+        {
+            ++iterations;
+
+            if (arr[j] > arr[j + 1])
+            {
+                std::swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+
+        if (!swapped)
+            break;
     }
 }
 
@@ -93,10 +132,4 @@ void Sorting::print_array() const
     std::cout << std::endl;
 }
 
-Sorting::~Sorting()
-{
-    if (arr != nullptr)
-    {
-        delete[] arr;
-    }
-}
+//Sorting::~Sorting() {}
