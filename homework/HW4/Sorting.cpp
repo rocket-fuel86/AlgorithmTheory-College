@@ -118,6 +118,38 @@ void Sorting::bubble_sort(size_t& iterations)
     }
 }
 
+void Sorting::selection_sort(size_t& iterations)
+{
+    if (arr != nullptr && size > 0)
+    {
+        for (size_t i = size; i > 0; --i)
+        {
+            size_t max_index = 0;
+
+            bool isSorted = true;
+
+            for (size_t j = 0; j < i; ++j)
+            {
+                ++iterations;
+                if (arr[j] > arr[max_index])
+                {
+                    max_index = j;
+                }
+
+                if (j > 0 && arr[j] < arr[j - 1])
+                    isSorted = false;
+            }
+
+            if (isSorted) return;
+
+            if (max_index != i - 1)
+            {
+                std::swap(arr[max_index], arr[i - 1]);
+            }
+        }
+    }
+}
+
 int* Sorting::get_arr()
 {
     return arr;
