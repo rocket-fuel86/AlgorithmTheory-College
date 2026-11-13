@@ -150,6 +150,23 @@ void Sorting::selection_sort(size_t& iterations)
     }
 }
 
+void Sorting::insertion_sort(size_t& iterations)
+{
+    for (int i = 1;i < size;i++) {
+        int temp = arr[i];
+
+        int j = i - 1;
+
+        while (arr[j] > temp && j >= 0) {
+            ++iterations;
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = temp;
+    }
+}
+
 int* Sorting::get_arr()
 {
     return arr;

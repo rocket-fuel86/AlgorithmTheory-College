@@ -17,6 +17,7 @@ public:
     void gnome_sort_asc(size_t& iterations);
     void bubble_sort(size_t& iterations);
     void selection_sort(size_t& iterations);
+    void insertion_sort(size_t& iterations);
 
     int* get_arr();
 
