@@ -1,5 +1,24 @@
 #include "Sorting.h"
 
+int Sorting::partition(const int p, const int q, size_t& iterations)
+{
+    int x = arr[q];
+    int i = p - 1;
+
+    for (int j = p; j < q; ++j)
+    {
+        ++iterations;
+        if (arr[j] <= x)
+        {
+            ++i;
+            std::swap(arr[i], arr[j]);
+        }
+    }
+
+    std::swap(arr[i + 1], arr[q]);
+    return i + 1;
+}
+
 Sorting::Sorting()
 {
     size = 1;
@@ -165,6 +184,15 @@ void Sorting::insertion_sort(size_t& iterations)
 
         arr[j + 1] = temp;
     }
+}
+
+void Sorting::quick_sort(const int p, const int q, size_t& iterations)
+{
+    if (p >= q) return;
+
+    int i = partition(p, q, iterations);
+    quick_sort(p, i - 1, iterations);
+    quick_sort(i + 1, q, iterations);
 }
 
 int* Sorting::get_arr()

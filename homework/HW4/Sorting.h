@@ -8,6 +8,8 @@ class Sorting
 private:
     int* arr = nullptr;
     size_t size;
+
+    int partition(const int p, const int q, size_t& iterations);
 public:
     Sorting();
     Sorting(int* arr, size_t size);
@@ -18,6 +20,7 @@ public:
     void bubble_sort(size_t& iterations);
     void selection_sort(size_t& iterations);
     void insertion_sort(size_t& iterations);
+    void quick_sort(const int p, const int q, size_t& iterations);
 
     int* get_arr();
 
